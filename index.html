@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- SCRIPTS EXTERNOS OU CDNs: -->
+    <!-- Console Eruda: -->
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    
+  <!-- NÃO PRECISA MEXER: -->
+  <!-- Resolução: -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Mostrar Acentos: -->
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  
+  <!-- ICONE DO SITE: -->
+  <link rel="icon" href="URL" type="icon/png">
+  
+  <!-- TÍTULO DO SITE: -->
+  <title>Console Joia</title>
+    
+  <!-- ESTILOS: -->
+    <!-- -→ padrao.css: -->
+    <link rel='stylesheet' href='https://samuelk36br.github.io/padraoCSS/padrao.css'>
+    <!-- -→ style.css: -->
+    <link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+  <div id="loading">
+    <span class="ponto-loading-span">Carregando página</span>
+    <img class="" id="loading-img" src="loading-img.png" alt="loading-image">
+    <audio src="sucesso.mp3"></audio>
+    
+    <output class="hidden">Se a página ainda não carregou tente recarregar a página!</output>
+  </div>
+  
+  <div id="main" class="">
+    <button id="reload">Reload</button>
+    
+    <p>Fala aí galera!</p>
+  </div>
+  
+  <!-- SCRIPTS: -->
+  <script type="module" src='api.js'></script>
+  <script type="module" src='script.js'></script>
+</body>
+</html>
