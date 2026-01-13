@@ -11,6 +11,7 @@ const loading = {
 }
 const main = document.querySelector("#main");
 
+
 btn.onclick = () => {
   const a = btn.animate(sairGirar.keyframes, sairGirar.tempo);
   
@@ -19,7 +20,7 @@ btn.onclick = () => {
     window.location.reload();
   })
   
-  // loading.audio.play();
+  loading.audio.play();
   
   btn.disabled = true;
   
@@ -127,9 +128,61 @@ const ANIMATION = {
       iterations: 1,
       fill: "forwards"
     }
+  },
+  fogos: {
+    keyframes: [
+      {opacity: 1},
+      {opacity: 0}
+    ],
+    tempo: {
+      duration: 1500,
+      iterations: 1,
+      easing: "ease-in",
+      fill: "forwards",
+      direction: "normal"
+    }
   }
 }
-const { girar, rodar, space, cores, sair, sairGirar } = ANIMATION;
+const { girar, rodar, space, cores, sair, sairGirar, fogos } = ANIMATION;
 
 p.style.fontSize = "5rem";
 const animacaoP = p.animate(cores.keyframes, cores.tempo);
+
+// Fogos de artificio:
+const fogosBtn = document.querySelector("#main #fogos");
+fogosBtn.onclick = fogosAnim;
+
+const fotosImgELMT = document.querySelectorAll(".fogos img");
+
+const fogos_AUDIO_ELEMENT = document.querySelector("#fogosMP3");
+
+for (let i = 0; i < fotosImgELMT.length; i++) {
+  fotosImgELMT[i].style.opacity = 0;
+}
+
+function fogos_AUDIO(num) {
+  fogos_AUDIO_ELEMENT.src = `fogosMP3/fogos${num}.mp3`;
+  fogos_AUDIO_ELEMENT.play();
+}
+
+function fogosAnim() {
+  fogosBtn.style.display = 'none';
+  
+  fogos_AUDIO(1);
+  const f1 = fotosImgELMT[0].animate(fogos.keyframes, fogos.tempo);
+  f1.finished.then(() => {
+    fogos_AUDIO(2);
+    const f2 = fotosImgELMT[1].animate(fogos.keyframes, fogos.tempo);
+    f2.finished.then(() => {
+      fogos_AUDIO(3);
+      const f3 = fotosImgELMT[2].animate(fogos.keyframes, fogos.tempo);
+      f3.finished.then(() => {
+        fogos_AUDIO(4);
+        const f4 = fotosImgELMT[3].animate(fogos.keyframes, fogos.tempo);
+        f4.finished.then(() => {
+          fogosBtn.style.display = 'inline-block';
+        })
+      })
+    })
+  })
+}

@@ -34,13 +34,31 @@
 
 /* div#main: */
 #main {
-  height: 100vh;
+  min-height: 100vh;
 }
 #main p {
 }
 #main button {
   font-size: 3.2rem;
   padding: 10px;
+}
+
+/* Fogos: */
+.fogos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  
+  height: 50vw;
+}
+
+.fogos img {
+  width: 50vw;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
 }
 
 /* -→ KEYFRAMES: ↓ */
