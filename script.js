@@ -49,14 +49,42 @@ api("https://x-colors.yurace.pro/api/random").then(({hex: cor}) => {
   setTimeout(() => {
     loading.div.classList.add("fadeout");
     loading.div.onanimationend = () => {
-      body.removeChild(loading.div);
+      main.animate(fade.in[0], fade.in[1])
       main.classList.remove("hidden");
+      
+      body.removeChild(loading.div);
     }
   }, 1000)
 })
 
 // Animações:
 const ANIMATION = {
+  fade: {
+    in: [
+      [
+        {opacity: 0},
+        {opacity: 1}
+      ],
+      {
+        duration: 500,
+        iterations: 1,
+        fill: "forwards",
+        direction: "normal"
+      }
+    ],
+    out: [
+      [
+        {opacity: 1},
+        {opacity: 0}
+      ],
+      {
+        duration: 200,
+        iterations: 1,
+        fill: "forwards",
+        direction: "normal" 
+      }
+    ]
+  },
   girar: {
     keyframes: [
       {opacity: 1},
@@ -170,12 +198,11 @@ const ANIMATION = {
         iterations: 1,
         fill: "forwards",
         direction: "normal",
-        delay: 5000
       }
     }
   }
 }
-const { girar, rodar, space, cores, sair, sairGirar, fogos, popup } = ANIMATION;
+const { girar, rodar, space, cores, sair, sairGirar, fogos, popup, fade } = ANIMATION;
 
 // Paragrafo dentro main:
 const p = document.querySelector("#main p");
@@ -225,6 +252,11 @@ function fogosAnim() {
 // Popup:
 const popup_button = document.querySelector("#popup_button");
 
+const popup_audio = {
+  in: document.querySelector("#popup-audio-in"),
+  out: document.querySelector("#popup-audio-out")
+}
+
 function criarPopup() {
   popup_button.disabled = true;
   
@@ -236,20 +268,33 @@ function criarPopup() {
   pup.innerText =
   "Lorem ipsum dolor sit amet!";
   
-  /* Fadein & fadeout animation: */
+  /* Fadein: */
+  popup_audio.in.play();
+  
   const popupFadein = pup.animate(popup.in.keyframes, popup.in.tempo);
   
+  /* Fadeout: */
   popupFadein.finished.then(() => {
-    const popupFadeout = pup.animate(popup.out.keyframes, popup.out.tempo);
-    
-    popupFadeout.finished.then(() => {
-      popup_button.disabled = false;
-    })
+    setTimeout(() => {
+      const popupFadeout = pup.animate(popup.out.keyframes, popup.out.tempo);
+      
+      /* Ativação do botão após fadeout do popup: */
+      popupFadeout.finished.then(() => {
+        popup_button.disabled = false;
+        main.removeChild(pup);
+      });
+    }, 5000);
   });
-  
   
   /* Anexação de popup à pagina: */
   main.appendChild(pup);
 }
-
 popup_button.onclick = criarPopup;
+
+// Slider:
+const sliderItems = document.querySelectorAll(".slider-item");
+
+// Númeração dos itens:
+sliderItems.forEach((elemento, index) => {
+  elemento.innerHTML = `Item: ${index+1}`;
+});

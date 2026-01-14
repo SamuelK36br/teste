@@ -40,7 +40,7 @@
 
 #main p {font-size: 5rem;}
 
-#main button {
+#main #reload, #fogos, #popup_button {
   font-size: 3.2rem;
   padding: 10px;
 }
@@ -71,6 +71,29 @@
   color: #000;
   font-size: 2.2rem;
   text-align: center;
+}
+
+/* Slider: */
+#slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  
+  padding: 5px;
+  border: inset black 3px;
+  
+  overflow-x: scroll;
+}
+
+.slider-item {
+  font-size: 1.6rem;
+  padding: 10px;
+  border-radius: 30px;
+  border-color: red;
+  font-style: italic;
 }
 
 /* -•→ KEYFRAMES: ↓ */
