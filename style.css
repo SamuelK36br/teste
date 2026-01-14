@@ -1,10 +1,10 @@
-/* -→ FONTES: */
+/* --→ FONTES: */
 /*...*/
 
-/* -→ VARIÁVEIS: */
+/* --→ VARIÁVEIS: */
 :root {}
 
-/* -→ ESTILO DA PÁGINA: */
+/* --→ ESTILO DA PÁGINA: */
 /* Loading: */
 #loading {
   width: 100vw;
@@ -13,6 +13,7 @@
   color: #000;
   position: absolute;
   z-index: 10;
+  overflow-y: hidden;
   
   display: flex;
   flex-direction: column;
@@ -36,8 +37,9 @@
 #main {
   min-height: 100vh;
 }
-#main p {
-}
+
+#main p {font-size: 5rem;}
+
 #main button {
   font-size: 3.2rem;
   padding: 10px;
@@ -51,8 +53,6 @@
   align-items: center;
   align-content: flex-start;
   flex-wrap: wrap;
-  
-  height: 50vw;
 }
 
 .fogos img {
@@ -61,7 +61,19 @@
   border-radius: 50%;
 }
 
-/* -→ KEYFRAMES: ↓ */
+/* Popup: */
+.popup {
+  position: fixed;
+  margin: 0 25vw;
+  top: 50%;
+  width: 50vw;
+  background-color: #fff;
+  color: #000;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* -•→ KEYFRAMES: ↓ */
 @keyframes ponto {
   0% {content: "";}
   33% {content: ".";}

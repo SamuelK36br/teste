@@ -142,14 +142,43 @@ const ANIMATION = {
       fill: "forwards",
       direction: "normal"
     }
+  },
+  popup: {
+    in: {
+      keyframes: [
+        { opacity: 0, transform: "scale(1)" },
+        { opacity: 1, transform: "scale(1.2)" },
+        {transform: "scale(1)"}
+      ],
+      tempo: {
+        duration: 500,
+        easing: "ease-in",
+        iterations: 1,
+        fill: "forwards",
+        direction: "normal"
+      }
+    },
+    out: {
+      keyframes: [
+        { transform: "scale(1)"},
+        {transform: "scale(1.2)"},
+        { opacity: 0, transform: "scale(0.5)" }
+      ],
+      tempo: {
+        duration: 500,
+        easing: "ease-in",
+        iterations: 1,
+        fill: "forwards",
+        direction: "normal",
+        delay: 5000
+      }
+    }
   }
 }
-const { girar, rodar, space, cores, sair, sairGirar, fogos } = ANIMATION;
+const { girar, rodar, space, cores, sair, sairGirar, fogos, popup } = ANIMATION;
 
 // Paragrafo dentro main:
 const p = document.querySelector("#main p");
-
-p.style.fontSize = "5rem";
 
 const animacaoP = p.animate(cores.keyframes, cores.tempo);
 
@@ -192,3 +221,35 @@ function fogosAnim() {
     })
   })
 }
+
+// Popup:
+const popup_button = document.querySelector("#popup_button");
+
+function criarPopup() {
+  popup_button.disabled = true;
+  
+  /* Criação do div popup: */
+  const pup = document.createElement("div");
+  
+  /* Classe popup e texto da popup: */
+  pup.classList.add("popup")
+  pup.innerText =
+  "Lorem ipsum dolor sit amet!";
+  
+  /* Fadein & fadeout animation: */
+  const popupFadein = pup.animate(popup.in.keyframes, popup.in.tempo);
+  
+  popupFadein.finished.then(() => {
+    const popupFadeout = pup.animate(popup.out.keyframes, popup.out.tempo);
+    
+    popupFadeout.finished.then(() => {
+      popup_button.disabled = false;
+    })
+  });
+  
+  
+  /* Anexação de popup à pagina: */
+  main.appendChild(pup);
+}
+
+popup_button.onclick = criarPopup;
