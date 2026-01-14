@@ -1,7 +1,6 @@
 import api from './api.js';
 
-const btn = document.querySelector("#reload");
-const bgc = document.querySelector("body");
+const body = document.querySelector("body");
 
 const loading = {
   div: document.querySelector("#loading"),
@@ -9,35 +8,39 @@ const loading = {
   audio: document.querySelector("#loading audio"),
   output: document.querySelector("#loading output")
 }
+
 const main = document.querySelector("#main");
 
-
-btn.onclick = () => {
-  const a = btn.animate(sairGirar.keyframes, sairGirar.tempo);
+// Botão de dar reload na página:
+const reload_button = document.querySelector("#reload");
+reload_button.onclick = () => {
+  const a = reload_button.animate(sairGirar.keyframes, sairGirar.tempo);
   
   a.finished.then(() => {
-    btn.style.display = 'none';
+    reload_button.style.display = 'none';
     window.location.reload();
   })
   
   loading.audio.play();
   
-  btn.disabled = true;
+  reload_button.disabled = true;
   
   loading.audio.onended = () => {
-    btn.disabled = false;
+    reload_button.disabled = false;
   }
 }
 
+// Aviso de página nãoo carregada: (5s)
 const loadingWarn = setTimeout(() => {
   loading.output.classList.remove("hidden");
   console.error("Página não carregada");
 }, 5000);
 
+// API de body background-color random:
 api("https://x-colors.yurace.pro/api/random").then(({hex: cor}) => {
   clearTimeout(loadingWarn);
   
-  bgc.style.backgroundColor = cor;
+  body.style.backgroundColor = cor;
   
   loading.span.classList.remove("ponto-loading-span")
   loading.span.style.color = 'green';
@@ -46,15 +49,13 @@ api("https://x-colors.yurace.pro/api/random").then(({hex: cor}) => {
   setTimeout(() => {
     loading.div.classList.add("fadeout");
     loading.div.onanimationend = () => {
-      bgc.removeChild(loading.div);
+      body.removeChild(loading.div);
       main.classList.remove("hidden");
     }
   }, 1000)
 })
 
-
-const p = document.querySelector("#main p");
-
+// Animações:
 const ANIMATION = {
   girar: {
     keyframes: [
@@ -145,7 +146,11 @@ const ANIMATION = {
 }
 const { girar, rodar, space, cores, sair, sairGirar, fogos } = ANIMATION;
 
+// Paragrafo dentro main:
+const p = document.querySelector("#main p");
+
 p.style.fontSize = "5rem";
+
 const animacaoP = p.animate(cores.keyframes, cores.tempo);
 
 // Fogos de artificio:
@@ -156,6 +161,7 @@ const fotosImgELMT = document.querySelectorAll(".fogos img");
 
 const fogos_AUDIO_ELEMENT = document.querySelector("#fogosMP3");
 
+/* opacity=0 para todas img firework: */
 for (let i = 0; i < fotosImgELMT.length; i++) {
   fotosImgELMT[i].style.opacity = 0;
 }
