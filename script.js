@@ -2,6 +2,57 @@
 const span = document.querySelector("span");
 const p = document.querySelector("p");
 
+const barraLateral = {
+  open: document.querySelector(".open-aside"),
+  aside: document.querySelector("aside"),
+  close: document.querySelector(".close-aside"),
+  audio: document.querySelector("audio"),
+  animation: {
+    open: [
+      [
+        { left: "-450px" },
+        { left: "0" }
+      ],
+      {
+        duration: 500,
+        easing: "ease-in",
+        iterations: 1,
+        fill: "forwards"
+        
+      }
+    ],
+    close: [
+      [
+        { left: "0" },
+        { left: "-500px" }
+      ],
+      {
+        duration: 500,
+        easing: "ease-out",
+        iterations: 1,
+        fill: "forwards"
+      }
+    ]
+  }
+}
+
+barraLateral.open.onclick = function() {
+  if (barraLateral.aside.classList.contains("hidden")) {
+    barraLateral.aside.classList.remove("hidden");
+    barraLateral.audio.play();
+    barraLateral.aside.animate(barraLateral.animation.open[0], barraLateral.animation.open[1]);
+  }
+}
+
+barraLateral.close.onclick = function() {
+  if (!barraLateral.aside.classList.contains("hidden")) {
+    barraLateral.audio.play();
+    barraLateral.aside.animate(barraLateral.animation.close[0], barraLateral.animation.close[1]).finished.then(() => {
+        barraLateral.aside.classList.add("hidden");
+    })
+  }
+}
+
 // ↑↑ SELETORES: }
 
 // >> SCRIPT:
@@ -14,7 +65,7 @@ function exibir(hora) {
   let seg = horaUpdt(hora.getSeconds());
   
   span.innerText = `${hr}:${min}:${seg}`;
-
+  
   let dia = hora.getDate();
   let mes = hora.getMonth() + 1;
   let ano = hora.getFullYear();
