@@ -35,28 +35,10 @@ const barraLateral = {
     ]
   }
 }
-
-barraLateral.open.onclick = function() {
-  if (barraLateral.aside.classList.contains("hidden")) {
-    barraLateral.aside.classList.remove("hidden");
-    barraLateral.audio.play();
-    barraLateral.aside.animate(barraLateral.animation.open[0], barraLateral.animation.open[1]);
-  }
-}
-
-barraLateral.close.onclick = function() {
-  if (!barraLateral.aside.classList.contains("hidden")) {
-    barraLateral.audio.play();
-    barraLateral.aside.animate(barraLateral.animation.close[0], barraLateral.animation.close[1]).finished.then(() => {
-        barraLateral.aside.classList.add("hidden");
-    })
-  }
-}
-
 // ↑↑ SELETORES: }
 
 // >> SCRIPT:
-
+// Data e Hora:
 setInterval(() => exibir(new Date()));
 
 function exibir(hora) {
@@ -76,4 +58,23 @@ function exibir(hora) {
 function horaUpdt(tempo) {
   if (tempo < 10) { return "0" + tempo }
   else { return tempo }
+}
+
+// Barra lateral:
+barraLateral.open.onclick = () => {
+  if (barraLateral.aside.classList.contains("hidden")) {
+    barraLateral.aside.classList.remove("hidden");
+    barraLateral.audio.play();
+    barraLateral.aside.animate(barraLateral.animation.open[0], barraLateral.animation.open[1]);
+  }
+}
+
+barraLateral.close.onclick = () => {
+  if (!barraLateral.aside.classList.contains("hidden")) {
+    barraLateral.audio.play();
+    barraLateral.aside.animate(barraLateral.animation.close[0], barraLateral.animation.close[1])
+    .finished.then(() => {
+      barraLateral.aside.classList.add("hidden");
+    })
+  }
 }

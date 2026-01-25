@@ -40,6 +40,7 @@ aside {
   width: 50vw;
   height: 100vh;
   background-color: #18b48f;
+  overflow-y: scroll;
 }
 
 .header-aside {
@@ -86,7 +87,7 @@ main {
   align-content: center;
   gap: 50px;
   
-  margin-top: 50px;
+  margin: 50px 0;
 }
 
 .polaroid {
@@ -124,7 +125,8 @@ main {
   overflow-y: scroll;
   height: 7vh;
   line-height: 1.4;
-}  
+}
+
 /* >> KEYFRAMES: ↓ */
 /* ... */
 
