@@ -1,3 +1,4 @@
+console.log("https://samuelk36br.github.io/teste/")
 // >> SELETORES: {
 const span = document.querySelector("span");
 const p = document.querySelector("p");
