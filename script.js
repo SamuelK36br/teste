@@ -1,7 +1,8 @@
-console.group("Links:")
-console.log("Site: https://samuelk36br.github.io/teste/");
-console.log("Github: https://github.com/SamuelK36br/teste");
-console.groupEnd()
+console.log(window.location);
+
+if (window.location.origin === "https://samuelk36br.github.io") {
+  eruda.destroy();
+}
 
 // >> SELETORES: {
 const span = document.querySelector("span");
