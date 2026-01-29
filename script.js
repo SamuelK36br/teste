@@ -1,11 +1,3 @@
-console.log(window.location);
-
-/*
-if (window.location.origin === "https://samuelk36br.github.io") {
-  eruda.destroy();
-}
-*/
-
 // >> SELETORES: {
 const span = document.querySelector("span");
 const p = document.querySelector("p");
