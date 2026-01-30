@@ -5,135 +5,13 @@
 :root {}
 
 /* >> ESTILO DA PÁGINA: */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #052e28;
-  padding: 2vw;
-}
-
-/* Horário e data: */
-.hora {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  
-  user-select: none;
-}
-
-.hora span {
-  font-size: 6vw;
-}
-
-.hora p {
-  font-size: 3vw;
-  
-}
-
-/* Barra lateral: */
-aside {
-  z-index: 100;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 50vw;
-  height: 100vh;
-  background-color: #18b48f;
-  overflow-y: scroll;
-}
-
-.header-aside {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5px;
-  align-items: center;
-  background-color: #117460;
-}
-
-.header-aside span {
-  font-size: 1.7rem;
-}
-
-.open-aside {
-  background-color: #fff;
-  border-radius: 50%;
-  padding: 2px;
-  cursor: pointer;
-  height: 5vh;
-}
-
-.close-aside {
-  cursor: pointer;
-  height: 4vh;
-}
-
-aside ul {
-  padding-left: 20px;
-  font-size: 1.6rem;
-}
-
-aside img[alt=eita] {
-  max-width: 100%;
-  border: white groove 10px;
-}
-
-/* Polaroids: */
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  gap: 50px;
-  
-  margin: 50px 0;
-}
-
-.polaroid {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  align-content: center;
-  gap: 5px;
-  
-  width: 50vw;
-  background-color: #fff;
-  padding: 2vw;
-  
-  transform: scale(1);
-  transition: all ease-out 100ms;
-}
-
-.polaroid:hover {
-  transform: scale(1.15);
-  transition:
-  transform ease-in 100ms;
-}
-
-.polaroid img {
-  width: 100%;
-}
-
-.polaroid p {
-  color: #000;
-  font-family: times;
-  text-align: left;
-  font-size: 3vw;
-  overflow-wrap: anywhere;
-  overflow-y: scroll;
-  height: 7vh;
-  line-height: 1.4;
-}
+/*...*/
 
 /* >> KEYFRAMES: ↓ */
-/* ... */
+/*...*/
 
 /* >> CLASSES SCRIPTADAS: */
-.hidden {
-  display: none;
-}
+/*...*/
 
 /* >> MEDIA QUERIES: ↓ */
 @media (min-width: 576px) {}
